@@ -3,12 +3,10 @@
 if has('win32') || has('win64')
   set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 else
-	" Enable per-directory .vimrc files and disable unsafe commands in them
-	set exrc
-	set secure
+  " Enable per-directory .vimrc files and disable unsafe commands in them
+  set exrc
+  set secure
 endif
-
-
 " Use the Solarized Dark theme
 set background=dark
 colorscheme solarized
@@ -34,6 +32,7 @@ Plugin 'msanders/snipmate.vim'        " prodvides code snippets for different la
 Plugin 'tpope/vim-surround'           " all about surroundings: parentheses, brackets, quotes, xml tags and more
 Plugin 'vim-scripts/TaskList.vim'     " provides list of task in the current file
 Plugin 'leafgarland/typescript-vim'   " typescript syntax highlighting
+Plugin 'Valloric/YouCompleteMe'       " Fast as-you-type, fuzzy-search code completion engine
 
 " All of your plugins must be added before the following line
 call vundle#end()           " required

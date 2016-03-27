@@ -11,6 +11,8 @@ function doIt() {
 		--exclude "README.md" --exclude "LICENSE" -avh --no-perms . ~;
 	source ~/.bash_profile;
 	vim +PluginInstall +qall #install all the vim plugins
+	cd ~/.vim/bundle/YouCompleteMe
+	./install.py --clang-completer --omnisharp-completer --racer-completer
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
