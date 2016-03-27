@@ -142,9 +142,6 @@ if has("autocmd")
 	" Treat .md files as Markdown
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 endif
-" Use the base16-defualt color scheme
-set background=dark
-colorscheme base16-default
 " Use fold method indent
 set foldmethod=indent
 " Set fold level 99
