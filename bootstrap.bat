@@ -1,11 +1,10 @@
 @ECHO OFF
 
-:: git pull origin master;
-:: git submodule init
-:: git submodule update
+git pull origin master;
+git submodule init
+git submodule update
 
 SET arg1=%1
-
 
 IF /I "%arg1%"=="-f" (
 	CALL :doIt
