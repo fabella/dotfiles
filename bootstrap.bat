@@ -32,7 +32,8 @@ SET bootstrapsh=%CD%\bootstrap.sh
 SET license=%CD%\LICENSE
 SET readme=%CD%\README.md
 SET gitmodules=%CD%\.gitmodules
+SET gitignore=%CD%\.gitignore
 
-robocopy %source% %dest% /E /Z /XF %bootstrapbat% /XF %bootstrapsh% /XF %license% /XF %readme% /XF %gitmodules%
+robocopy %source% %dest% /E /Z /XF %bootstrapbat% /XF %bootstrapsh% /XF %license% /XF %readme% /XF %gitmodules% /XF %gitignore%
 vim +PluginInstall +qall
 EXIT /B 0

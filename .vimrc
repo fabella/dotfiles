@@ -33,6 +33,8 @@ Plugin 'tpope/vim-surround'           " all about surroundings: parentheses, bra
 Plugin 'vim-scripts/TaskList.vim'     " provides list of task in the current file
 Plugin 'leafgarland/typescript-vim'   " typescript syntax highlighting
 Plugin 'Valloric/YouCompleteMe'       " Fast as-you-type, fuzzy-search code completion engine
+Plugin 'L9'                           " Dependency for L9
+Plugin 'vim-scripts/FuzzyFinder'      " FuzzyFinder for files
 
 " All of your plugins must be added before the following line
 call vundle#end()           " required
@@ -161,3 +163,7 @@ nnoremap <silent><C-j> m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
 nnoremap <silent><C-k> m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
 nnoremap <silent><A-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
 nnoremap <silent><A-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+
+nmap <leader>f :FufFile<CR>
+nmap <leader>b :FufBuffer<CR>
+nmap <leader>t :FufTaggedFile<CR>
