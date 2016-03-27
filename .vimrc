@@ -4,6 +4,11 @@ if has('win32') || has('win64')
   set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 endif
 
+" Use the Solarized Dark theme
+set background=dark
+colorscheme solarized
+let g:solarized_termtrans=1
+
 set nocompatible            " be iMProved, required for Vundle
 filetype off                " required
 
@@ -23,7 +28,6 @@ Plugin 'tpope/vim-fugitive'           " Git wrapper
 Plugin 'msanders/snipmate.vim'        " prodvides code snippets for different languagues
 Plugin 'tpope/vim-surround'           " all about surroundings: parentheses, brackets, quotes, xml tags and more
 Plugin 'vim-scripts/TaskList.vim'     " provides list of task in the current file
-Plugin 'chriskempson/base16-vim'      " different color themes for vim
 Plugin 'leafgarland/typescript-vim'   " typescript syntax highlighting
 
 " All of your plugins must be added before the following line
