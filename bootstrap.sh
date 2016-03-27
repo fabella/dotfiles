@@ -11,8 +11,12 @@ function doIt() {
 		--exclude "README.md" --exclude "LICENSE" -avh --no-perms . ~;
 	source ~/.bash_profile;
 	vim +PluginInstall +qall #install all the vim plugins
+	curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
+	sudo apt-get install -y nodejs
+	sudo npm install -g typescript bower
+	sudo apt-get install build-essential cmake python-dev python3-dev mono-complete gccgo-go
 	cd ~/.vim/bundle/YouCompleteMe
-	./install.py --clang-completer --omnisharp-completer --racer-completer
+	./install.py --all
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
