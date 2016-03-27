@@ -2,7 +2,12 @@
 " across (heterogeneous) systems easier.
 if has('win32') || has('win64')
   set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+else
+	" Enable per-directory .vimrc files and disable unsafe commands in them
+	set exrc
+	set secure
 endif
+
 
 " Use the Solarized Dark theme
 set background=dark
@@ -75,9 +80,7 @@ set backupskip=/tmp/*,/private/tmp/*
 " Respect modeline in files
 set modeline
 set modelines=4
-" Enable per-directory .vimrc files and disable unsafe commands in them
-set exrc
-set secure
+
 " Enable lines numbers
 set number
 " Enable syntax highlighting
