@@ -151,6 +151,9 @@ set foldmethod=indent
 " Set fold level 99
 set foldlevel=99
 
+" Show hidden files in nerdtree
+let NERDTreeShowHidden=1
+
 map <c-j> <c-w>j
 map <c-k> <c-k>k
 map <c-l> <c-l>l
@@ -167,3 +170,4 @@ nnoremap <silent><A-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 nmap <leader>f :FufFile<CR>
 nmap <leader>b :FufBuffer<CR>
 nmap <leader>t :FufTaggedFile<CR>
+nmap <leader>nt :NERDTree<CR>
