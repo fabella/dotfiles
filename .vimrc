@@ -35,6 +35,7 @@ Plugin 'leafgarland/typescript-vim'   " typescript syntax highlighting
 Plugin 'Valloric/YouCompleteMe'       " Fast as-you-type, fuzzy-search code completion engine
 Plugin 'L9'                           " Dependency for L9
 Plugin 'vim-scripts/FuzzyFinder'      " FuzzyFinder for files
+Plugin 'sjl/gundo.vim'                " Undo History Viewer
 
 " All of your plugins must be added before the following line
 call vundle#end()           " required
@@ -84,6 +85,9 @@ set modelines=4
 
 " Enable lines numbers
 set number
+" Set fileformat(s) to unix
+set fileformat=unix
+set fileformats=unix
 " Enable syntax highlighting
 syntax on
 " Highlight current line
@@ -150,6 +154,10 @@ endif
 set foldmethod=indent
 " Set fold level 99
 set foldlevel=99
+" Plugin configurations
+" Gundo.vim
+let g:gundo_close_on_revert=1
+
 
 " Show hidden files in nerdtree
 let NERDTreeShowHidden=1
@@ -171,3 +179,5 @@ nmap <leader>f :FufFile<CR>
 nmap <leader>b :FufBuffer<CR>
 nmap <leader>t :FufTaggedFile<CR>
 nmap <leader>nt :NERDTree<CR>
+
+nnoremap <F5> :GundoToggle<CR>
