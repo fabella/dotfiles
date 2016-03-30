@@ -1,11 +1,11 @@
 " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
 " across (heterogeneous) systems easier.
 if has('win32') || has('win64')
-  set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+				set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 else
-  " Enable per-directory .vimrc files and disable unsafe commands in them
-  set exrc
-  set secure
+				" Enable per-directory .vimrc files and disable unsafe commands in them
+				set exrc
+				set secure
 endif
 " Use the Solarized Dark theme
 set background=dark
@@ -25,19 +25,23 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " now list all the plugins
-Plugin 'Lokaltog/vim-powerline'       " provides a much better status line for vim
-Plugin 'scrooloose/nerdtree'          " allows you to explore your filesystem and to open files and directories
-Plugin 'tpope/vim-fugitive'           " Git wrapper
-Plugin 'msanders/snipmate.vim'        " prodvides code snippets for different languagues
-Plugin 'tpope/vim-surround'           " all about surroundings: parentheses, brackets, quotes, xml tags and more
-Plugin 'vim-scripts/TaskList.vim'     " provides list of task in the current file
-Plugin 'leafgarland/typescript-vim'   " typescript syntax highlighting
-Plugin 'Valloric/YouCompleteMe'       " Fast as-you-type, fuzzy-search code completion engine
 Plugin 'L9'                           " Dependency for L9
-Plugin 'vim-scripts/FuzzyFinder'      " FuzzyFinder for files
+Plugin 'leafgarland/typescript-vim'   " typescript syntax highlighting
+Plugin 'Lokaltog/vim-powerline'       " provides a much better status line for vim
+Plugin 'msanders/snipmate.vim'        " provides code snippets for different languages
+Plugin 'scrooloose/nerdtree'          " allows you to explore your filesystem and to open files and directories
+Plugin 'scrooloose/syntastic'         " Syntax checking
 Plugin 'sjl/gundo.vim'                " Undo History Viewer
+Plugin 'tpope/vim-abolish'            " Allows substitution on variants of a word
+Plugin 'tpope/vim-commentary'         " Helps add comment string
+Plugin 'tpope/vim-fugitive'           " Git wrapper
+Plugin 'tpope/vim-surround'           " all about surroundings: parentheses, brackets, quotes, XML tags and more
+Plugin 'tpope/vim-unimpaired'         " Adds new cool commands
+Plugin 'Valloric/YouCompleteMe'       " Fast as-you-type, fuzzy-search code completion engine
+Plugin 'vim-scripts/FuzzyFinder'      " FuzzyFinder for files
+Plugin 'vim-scripts/TaskList.vim'     " provides list of task in the current file
 
-" All of your plugins must be added before the following line
+" All of your plug ins must be added before the following line
 call vundle#end()           " required
 filetype  plugin indent on  " require
 
@@ -49,6 +53,16 @@ filetype  plugin indent on  " require
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+" Syntastic configuration
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
@@ -73,7 +87,7 @@ set noeol
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
 if exists("&undodir")
-	set undodir=~/.vim/undo
+				set undodir=~/.vim/undo
 endif
 
 " Don't create backups when editing files in certain directories
@@ -88,6 +102,11 @@ set number
 " Set fileformat(s) to unix
 set fileformat=unix
 set fileformats=unix
+" Number format tip 10 from Practical Vim 2nd Edition
+" makes decimal the default format
+set nrformats=
+" Automatically change directory to the opened file location
+set autochdir
 " Enable syntax highlighting
 syntax on
 " Highlight current line
@@ -123,19 +142,19 @@ set title
 set showcmd
 " Use relative line numbers
 if exists("&relativenumber")
-	set relativenumber
-	au BufReadPost * set relativenumber
+				set relativenumber
+				au BufReadPost * set relativenumber
 endif
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
-	let save_cursor = getpos(".")
-	let old_query = getreg('/')
-	:%s/\s\+$//e
-	call setpos('.', save_cursor)
-	call setreg('/', old_query)
+				let save_cursor = getpos(".")
+				let old_query = getreg('/')
+				:%s/\s\+$//e
+				call setpos('.', save_cursor)
+				call setreg('/', old_query)
 endfunction
 noremap <leader>ss :call StripWhitespace()<CR>
 " Save a file as root (,W)
@@ -143,12 +162,12 @@ noremap <leader>W :w !sudo tee % > /dev/null<CR>
 
 " Automatic commands
 if has("autocmd")
-	" Enable file type detection
-	filetype on
-	" Treat .json files as .js
-	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
-	" Treat .md files as Markdown
-	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+				" Enable file type detection
+				filetype on
+				" Treat .json files as .js
+				autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+				" Treat .md files as Markdown
+				autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 endif
 " Use fold method indent
 set foldmethod=indent
@@ -157,15 +176,29 @@ set foldlevel=99
 " Plugin configurations
 " Gundo.vim
 let g:gundo_close_on_revert=1
-
+" If the current buffer has never been saved, it will have no name,
+" call the file browser to save it, otherwise just save it.
+command! -nargs=0 -bar Update if &modified
+												\|    if empty(bufname('%'))
+																\|        browse confirm write
+																\|    else
+																				\|        confirm write
+																				\|    endif
+																				\|endif
+nnoremap <silent> <C-S> :<C-u>Update<CR>
+inoremap <c-s> <c-o>:Update<CR>
+vmap <C-s> <esc>:w<CR>gv
+inoremap <c-s> <c-o>:Update<CR><CR>
 
 " Show hidden files in nerdtree
 let NERDTreeShowHidden=1
 
+
+" Map the window movement keys
 map <c-j> <c-w>j
-map <c-k> <c-k>k
-map <c-l> <c-l>l
-map <c-h> <c-h>h
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
 " Show tasklist (,td)
 map <leader>td <Plug>TaskList
 
@@ -181,3 +214,15 @@ nmap <leader>t :FufTaggedFile<CR>
 nmap <leader>nt :NERDTree<CR>
 
 nnoremap <F5> :GundoToggle<CR>
+
+" Bubble single lines
+nmap <C-Up> [e
+nmap <C-Down> ]e
+" Bubble multiple lines
+vmap <C-Up> [egv
+vmap <C-Down> ]egv
+" Visually select the text that was last edited/pasted
+nmap gV `[v`]
+
+" Save current file
+nmap <C-s> :w<CR>
