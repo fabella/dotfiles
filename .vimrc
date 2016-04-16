@@ -29,6 +29,7 @@ Plugin 'L9'                           " Dependency for L9
 Plugin 'leafgarland/typescript-vim'   " typescript syntax highlighting
 Plugin 'Lokaltog/vim-powerline'       " provides a much better status line for vim
 Plugin 'msanders/snipmate.vim'        " provides code snippets for different languages
+Plugin 'pangloss/vim-javascript'      " provides list of task in the current file
 Plugin 'scrooloose/nerdtree'          " allows you to explore your filesystem and to open files and directories
 Plugin 'scrooloose/syntastic'         " Syntax checking
 Plugin 'sjl/gundo.vim'                " Undo History Viewer
@@ -40,6 +41,7 @@ Plugin 'tpope/vim-unimpaired'         " Adds new cool commands
 Plugin 'Valloric/YouCompleteMe'       " Fast as-you-type, fuzzy-search code completion engine
 Plugin 'vim-scripts/FuzzyFinder'      " FuzzyFinder for files
 Plugin 'vim-scripts/TaskList.vim'     " provides list of task in the current file
+Plugin 'docker/docker', {'rpt': '/contrib/syntax/vim/' }                " docker syntax highlighting
 
 " All of your plug ins must be added before the following line
 call vundle#end()           " required
