@@ -38,7 +38,7 @@ Plugin 'tpope/vim-commentary'         " Helps add comment string
 Plugin 'tpope/vim-fugitive'           " Git wrapper
 Plugin 'tpope/vim-surround'           " all about surroundings: parentheses, brackets, quotes, XML tags and more
 Plugin 'tpope/vim-unimpaired'         " Adds new cool commands
-Plugin 'Valloric/YouCompleteMe'       " Fast as-you-type, fuzzy-search code completion engine
+" Plugin 'Valloric/YouCompleteMe'       " Fast as-you-type, fuzzy-search code completion engine
 Plugin 'vim-scripts/FuzzyFinder'      " FuzzyFinder for files
 Plugin 'vim-scripts/TaskList.vim'     " provides list of task in the current file
 Plugin 'docker/docker', {'rpt': '/contrib/syntax/vim/' }                " docker syntax highlighting
