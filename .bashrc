@@ -10,6 +10,7 @@ esac
 # display branch name in command prompt
 source ~/.git-prompt.sh
 
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -147,3 +148,5 @@ then
   tmux attach-session -t "$USER" || tmux new-session -s "$USER"
   exit
 fi
+# C-s issue in vim
+stty -ixon
