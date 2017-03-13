@@ -212,7 +212,7 @@ nnoremap <silent><A-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 nmap <leader>f :FufFile<CR>
 nmap <leader>b :FufBuffer<CR>
 nmap <leader>t :FufTaggedFile<CR>
-nmap <leader>nt :NERDTree<CR>
+nmap <leader>n :NERDTree<CR>
 
 nnoremap <F5> :GundoToggle<CR>
 
